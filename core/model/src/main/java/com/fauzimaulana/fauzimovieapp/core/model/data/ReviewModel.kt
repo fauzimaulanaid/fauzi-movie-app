@@ -11,6 +11,6 @@ data class ReviewModel(
 
 data class AuthorDetailsModel(
     val name: String = "",
-    val rating: Int = 0,
+    val rating: Double = 0.0,
     val username: String = ""
 )
