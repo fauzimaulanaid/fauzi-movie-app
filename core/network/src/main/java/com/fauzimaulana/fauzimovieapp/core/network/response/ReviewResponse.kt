@@ -30,7 +30,7 @@ data class AuthorDetails(
 	val name: String? = null,
 
 	@SerialName("rating")
-	val rating: Int? = null,
+	val rating: Double? = null,
 
 	@SerialName("username")
 	val username: String? = null
