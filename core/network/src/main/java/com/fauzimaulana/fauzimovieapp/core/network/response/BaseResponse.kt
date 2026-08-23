@@ -1,9 +1,10 @@
 package com.fauzimaulana.fauzimovieapp.core.network.response
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-open class BaseResponse<T> {
-
-    @SerializedName("results")
+@Serializable
+data class BaseResponse<T>(
+    @SerialName("results")
     val results: T? = null
-}
+)

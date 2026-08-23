@@ -1,37 +1,37 @@
 package com.fauzimaulana.fauzimovieapp.core.network.response
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class ReviewResponse(
 
-	@field:SerializedName("id")
+	@SerialName("id")
 	val id: String? = null,
 
-	@field:SerializedName("author")
+	@SerialName("author")
 	val author: String? = null,
 
-	@field:SerializedName("author_details")
+	@SerialName("author_details")
 	val authorDetails: AuthorDetails? = null,
 
-	@field:SerializedName("content")
+	@SerialName("content")
 	val content: String? = null,
 
-	@field:SerializedName("created_at")
+	@SerialName("created_at")
 	val createdAt: String? = null,
 )
 
 
+@Serializable
 data class AuthorDetails(
 
-	@field:SerializedName("avatar_path")
-	val avatarPath: Any? = null,
-
-	@field:SerializedName("name")
+	@SerialName("name")
 	val name: String? = null,
 
-	@field:SerializedName("rating")
+	@SerialName("rating")
 	val rating: Int? = null,
 
-	@field:SerializedName("username")
+	@SerialName("username")
 	val username: String? = null
 )

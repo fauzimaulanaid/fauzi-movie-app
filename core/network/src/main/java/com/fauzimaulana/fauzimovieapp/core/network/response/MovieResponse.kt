@@ -1,24 +1,26 @@
 package com.fauzimaulana.fauzimovieapp.core.network.response
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class MovieResponse(
 
-	@SerializedName("id")
+	@SerialName("id")
 	val id: Int? = null,
 
-	@SerializedName("poster_path")
+	@SerialName("poster_path")
 	val posterPath: String? = null,
 
-	@SerializedName("backdrop_path")
+	@SerialName("backdrop_path")
 	val backdropPath: String? = null,
 
-	@SerializedName("title")
+	@SerialName("title")
 	val title: String? = null,
 
-	@SerializedName("release_date")
+	@SerialName("release_date")
 	val releaseDate: String? = null,
 
-	@SerializedName("overview")
+	@SerialName("overview")
 	val overview: String? = null,
 )

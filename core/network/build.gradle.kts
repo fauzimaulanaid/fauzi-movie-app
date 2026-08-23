@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 android {
@@ -33,7 +34,7 @@ dependencies {
 
     //Retrofit
     implementation(libs.retrofit.core)
-    implementation(libs.retrofit.converter.gson)
+    implementation(libs.retrofit.kotlinx.serialization)
 
     //Hilt
     implementation(libs.hilt.android)
@@ -41,6 +42,9 @@ dependencies {
 
     //Paging
     implementation(libs.paging.common)
+
+    //Kotlinx Serialization
+    implementation(libs.kotlinx.serialization.json)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
