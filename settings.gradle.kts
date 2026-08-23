@@ -22,7 +22,8 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Fauzi Movie App"
+rootProject.name = "fauzi-movie-app"
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
 include(":core:network")
 include(":core:data")
