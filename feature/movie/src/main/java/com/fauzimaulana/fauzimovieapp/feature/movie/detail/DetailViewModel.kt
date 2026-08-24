@@ -22,7 +22,7 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailViewModel @Inject constructor(
     getMovieReviewsUseCase: GetMovieReviewsUseCase,
-    private val isFavoriteMovieUseCase: IsFavoriteMovieUseCase,
+    isFavoriteMovieUseCase: IsFavoriteMovieUseCase,
     private val insertFavoriteMovieUseCase: InsertFavoriteMovieUseCase,
     private val deleteFavoriteMovieUseCase: DeleteFavoriteMovieUseCase,
     savedStateHandle: SavedStateHandle

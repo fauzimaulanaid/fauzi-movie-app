@@ -12,6 +12,7 @@ import androidx.navigation.compose.rememberNavController
 import com.fauzimaulana.fauzimovieapp.core.model.data.MovieModel
 import com.fauzimaulana.fauzimovieapp.core.ui.theme.FauziMovieAppTheme
 import com.fauzimaulana.fauzimovieapp.feature.movie.detail.DetailScreen
+import com.fauzimaulana.fauzimovieapp.feature.movie.favorite.FavoriteScreen
 import com.fauzimaulana.fauzimovieapp.feature.movie.home.HomeScreen
 
 @Composable
@@ -82,7 +83,20 @@ fun FauziMovieAppNavHost(
             )
         }
         composable(route = Favorite.route) {
-
+            FavoriteScreen(
+                onBackPressed = { navController.navigateUp() },
+                onMovieClicked = { movie ->
+                    navController.navigate(
+                        Detail.route +
+                                "/${movie.id}" +
+                                "/${movie.title}" +
+                                "/${Uri.encode(movie.backdropPath)}" +
+                                "/${Uri.encode(movie.posterPath)}" +
+                                "/${Uri.encode(movie.releaseDate)}" +
+                                "/${Uri.encode(movie.overview)}"
+                    )
+                }
+            )
         }
     }
 }

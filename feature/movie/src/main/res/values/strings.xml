@@ -12,4 +12,5 @@
     <string name="share">Share</string>
     <string name="share_text">%s \n%s \n\nSynopsys: \n%s \n\nLets see and find your favorite Movie in Fauzi Movie App</string>
     <string name="no_review_available">No review available</string>
+    <string name="no_favorite_movie">No favorite movie available</string>
 </resources>
