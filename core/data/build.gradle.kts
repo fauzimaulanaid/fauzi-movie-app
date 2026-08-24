@@ -29,6 +29,7 @@ dependencies {
     implementation(projects.core.model)
     implementation(projects.core.network)
     implementation(projects.core.domain)
+    implementation(projects.core.database)
 
     //Hilt
     implementation(libs.hilt.android)
