@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.fauzimaulana.fauzimovieapp.core.data"
+    namespace = "com.fauzimaulana.fauzimovieapp.core.database"
     compileSdk {
         version = release(37)
     }
@@ -27,17 +27,15 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.material)
     implementation(projects.core.model)
-    implementation(projects.core.network)
-    implementation(projects.core.domain)
-    implementation(projects.core.database)
+
+    //Room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
 
     //Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
-
-    //Paging
-    implementation(libs.paging.common)
-    implementation(libs.paging.runtime)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)

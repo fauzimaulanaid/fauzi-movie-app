@@ -21,8 +21,8 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.fauzimaulana.fauzimovieapp.core.model.data.MovieModel
-import com.fauzimaulana.fauzimovieapp.core.ui.BannerListItem
-import com.fauzimaulana.fauzimovieapp.core.ui.MovieListItem
+import com.fauzimaulana.fauzimovieapp.core.ui.listitem.BannerListItem
+import com.fauzimaulana.fauzimovieapp.core.ui.listitem.MovieListItem
 import com.fauzimaulana.fauzimovieapp.core.ui.components.SectionTitle
 import com.fauzimaulana.fauzimovieapp.core.ui.theme.FauziMovieAppTheme
 import com.fauzimaulana.fauzimovieapp.feature.movie.R

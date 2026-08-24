@@ -2,7 +2,7 @@ package com.fauzimaulana.fauzimovieapp.core.network.di
 
 import com.fauzimaulana.fauzimovieapp.core.network.service.ApiService
 import com.fauzimaulana.fauzimovieapp.core.network.BuildConfig
-import com.fauzimaulana.fauzimovieapp.core.network.RemoteDataSource
+import com.fauzimaulana.fauzimovieapp.core.network.datasource.RemoteDataSource
 import com.fauzimaulana.fauzimovieapp.core.network.interceptor.AuthInterceptor
 import dagger.Module
 import dagger.Provides
