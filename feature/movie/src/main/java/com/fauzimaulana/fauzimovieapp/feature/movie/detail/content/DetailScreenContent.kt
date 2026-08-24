@@ -17,6 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
@@ -77,17 +78,27 @@ fun DetailScreenContent(
             title = stringResource(R.string.review)
         )
         Spacer(modifier = Modifier.height(8.dp))
-        LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(4.dp),
-            modifier = Modifier
-                .height(400.dp)
-                .padding(horizontal = 16.dp)
-        ) {
-            items(movieReviews.itemCount) { index ->
-                val movieReview = movieReviews[index] ?: ReviewModel()
-                ReviewListItem(
-                    review = movieReview
-                )
+        if (movieReviews.loadState.refresh is LoadState.NotLoading && movieReviews.itemCount == 0) {
+            Text(
+                text = stringResource(R.string.no_review_available),
+                style = MaterialTheme.typography.bodyMedium,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp)
+            )
+        } else {
+            LazyColumn(
+                verticalArrangement = Arrangement.spacedBy(4.dp),
+                modifier = Modifier
+                    .height(400.dp)
+                    .padding(horizontal = 16.dp)
+            ) {
+                items(movieReviews.itemCount) { index ->
+                    val movieReview = movieReviews[index] ?: ReviewModel()
+                    ReviewListItem(
+                        review = movieReview
+                    )
+                }
             }
         }
     }
