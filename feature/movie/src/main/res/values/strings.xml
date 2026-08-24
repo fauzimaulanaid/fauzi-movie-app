@@ -10,4 +10,5 @@
     <string name="review">Review</string>
     <string name="detail">Detail</string>
     <string name="share">Share</string>
+    <string name="share_text">%s \n%s \n\nSynopsys: \n%s \n\nLets see and find your favorite Movie in Fauzi Movie App</string>
 </resources>
