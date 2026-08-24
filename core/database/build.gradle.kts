@@ -26,6 +26,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
     implementation(libs.material)
+    implementation(projects.core.model)
 
     //Room
     implementation(libs.androidx.room.runtime)
