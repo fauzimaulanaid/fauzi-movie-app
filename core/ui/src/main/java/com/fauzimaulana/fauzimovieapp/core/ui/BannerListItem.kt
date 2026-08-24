@@ -6,12 +6,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil3.compose.AsyncImage
 import com.fauzimaulana.fauzimovieapp.core.model.data.MovieModel
+import com.fauzimaulana.fauzimovieapp.core.ui.components.DefaultImageLoader
 import com.fauzimaulana.fauzimovieapp.core.ui.theme.FauziMovieAppTheme
 
 @Composable
@@ -19,16 +17,13 @@ fun BannerListItem(
     modifier: Modifier = Modifier,
     movie: MovieModel
 ) {
-    AsyncImage(
-        model = "https://image.tmdb.org/t/p/w500${movie.backdropPath}",
+    DefaultImageLoader(
+        image = movie.backdropPath,
         contentDescription = movie.title,
-        contentScale = ContentScale.Crop,
-        placeholder = painterResource(R.drawable.ic_placeholder),
-        error = painterResource(R.drawable.ic_broken_image),
         modifier = modifier
             .width(320.dp)
             .height(200.dp)
-            .clip(RoundedCornerShape(8.dp)),
+            .clip(RoundedCornerShape(8.dp))
     )
 }
 
