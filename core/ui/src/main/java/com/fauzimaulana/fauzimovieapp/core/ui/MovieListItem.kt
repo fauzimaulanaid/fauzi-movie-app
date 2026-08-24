@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.fauzimaulana.fauzimovieapp.core.model.data.MovieModel
 import com.fauzimaulana.fauzimovieapp.core.ui.theme.FauziMovieAppTheme
+import com.fauzimaulana.fauzimovieapp.core.ui.utils.formatDate
 
 @Composable
 fun MovieListItem(
@@ -48,7 +49,7 @@ fun MovieListItem(
         )
         Spacer(modifier = Modifier.height(2.dp))
         Text(
-            text = movie.releaseDate,
+            text = movie.releaseDate.formatDate(),
             style = MaterialTheme.typography.bodySmall,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis

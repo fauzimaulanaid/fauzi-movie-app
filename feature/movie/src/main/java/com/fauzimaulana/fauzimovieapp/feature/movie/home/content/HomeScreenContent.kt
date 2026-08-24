@@ -43,7 +43,7 @@ fun HomeScreenContent(
         )
         Spacer(modifier = Modifier.height(8.dp))
         LazyRow(
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
             contentPadding = PaddingValues(horizontal = 16.dp)
         ) {
             items(count = popularMovies.itemCount) { index ->
