@@ -10,7 +10,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.fauzimaulana.fauzimovieapp.core.ui.R
 import com.fauzimaulana.fauzimovieapp.core.ui.theme.FauziMovieAppTheme
 
 @Composable
@@ -43,7 +45,7 @@ private fun DefaultIconButtonPreview() {
     FauziMovieAppTheme {
         DefaultIconButton(
             icon = Icons.AutoMirrored.Default.ArrowBack,
-            contentDescription = "Back",
+            contentDescription = stringResource(R.string.back),
             contentColor = MaterialTheme.colorScheme.primary,
             onClick = {}
         )
