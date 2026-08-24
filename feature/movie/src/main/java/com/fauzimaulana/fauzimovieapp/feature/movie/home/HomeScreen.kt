@@ -45,7 +45,7 @@ fun HomeScreen(
         },
         content = { paddingValues ->
             HomeScreenContent(
-                modifier = modifier.padding(paddingValues),
+                modifier = Modifier.padding(paddingValues),
                 popularMovies = popularMovies,
                 topRatedMovies = topRatedMovies,
                 nowPlayingMovies = nowPlayingMovies
