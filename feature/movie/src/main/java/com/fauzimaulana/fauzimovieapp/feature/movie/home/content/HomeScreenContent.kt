@@ -17,12 +17,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.fauzimaulana.fauzimovieapp.core.model.data.MovieModel
 import com.fauzimaulana.fauzimovieapp.core.ui.listitem.BannerListItem
+import com.fauzimaulana.fauzimovieapp.core.ui.listitem.BannerShimmerItem
 import com.fauzimaulana.fauzimovieapp.core.ui.listitem.MovieListItem
+import com.fauzimaulana.fauzimovieapp.core.ui.listitem.MovieShimmerItem
 import com.fauzimaulana.fauzimovieapp.core.ui.components.SectionTitle
 import com.fauzimaulana.fauzimovieapp.core.ui.theme.FauziMovieAppTheme
 import com.fauzimaulana.fauzimovieapp.feature.movie.R
@@ -59,12 +62,18 @@ fun HomeScreenContent(
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             contentPadding = PaddingValues(horizontal = 16.dp)
         ) {
-            items(count = popularMovies.itemCount) { index ->
-                val popularMovie = popularMovies[index] ?: MovieModel()
-                BannerListItem(
-                    movie = popularMovie,
-                    onClick = { onMovieClicked(popularMovie) }
-                )
+            if (popularMovies.loadState.refresh is LoadState.Loading) {
+                items(5) {
+                    BannerShimmerItem()
+                }
+            } else {
+                items(count = popularMovies.itemCount) { index ->
+                    val popularMovie = popularMovies[index] ?: MovieModel()
+                    BannerListItem(
+                        movie = popularMovie,
+                        onClick = { onMovieClicked(popularMovie) }
+                    )
+                }
             }
         }
         Spacer(modifier = Modifier.height(16.dp))
@@ -76,12 +85,18 @@ fun HomeScreenContent(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             contentPadding = PaddingValues(horizontal = 16.dp)
         ) {
-            items(count = topRatedMovies.itemCount) { index ->
-                val topRatedMovie = topRatedMovies[index] ?: MovieModel()
-                MovieListItem(
-                    movie = topRatedMovie,
-                    onClick = { onMovieClicked(topRatedMovie) }
-                )
+            if (topRatedMovies.loadState.refresh is LoadState.Loading) {
+                items(5) {
+                    MovieShimmerItem()
+                }
+            } else {
+                items(count = topRatedMovies.itemCount) { index ->
+                    val topRatedMovie = topRatedMovies[index] ?: MovieModel()
+                    MovieListItem(
+                        movie = topRatedMovie,
+                        onClick = { onMovieClicked(topRatedMovie) }
+                    )
+                }
             }
         }
         Spacer(modifier = Modifier.height(16.dp))
@@ -93,12 +108,18 @@ fun HomeScreenContent(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             contentPadding = PaddingValues(horizontal = 16.dp)
         ) {
-            items(count = nowPlayingMovies.itemCount) { index ->
-                val nowPlayingMovie = nowPlayingMovies[index] ?: MovieModel()
-                MovieListItem(
-                    movie = nowPlayingMovie,
-                    onClick = { onMovieClicked(nowPlayingMovie) }
-                )
+            if (nowPlayingMovies.loadState.refresh is LoadState.Loading) {
+                items(5) {
+                    MovieShimmerItem()
+                }
+            } else {
+                items(count = nowPlayingMovies.itemCount) { index ->
+                    val nowPlayingMovie = nowPlayingMovies[index] ?: MovieModel()
+                    MovieListItem(
+                        movie = nowPlayingMovie,
+                        onClick = { onMovieClicked(nowPlayingMovie) }
+                    )
+                }
             }
         }
     }
