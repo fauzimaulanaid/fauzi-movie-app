@@ -23,7 +23,7 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.fauzimaulana.fauzimovieapp.core.model.data.MovieModel
 import com.fauzimaulana.fauzimovieapp.core.model.data.ReviewModel
-import com.fauzimaulana.fauzimovieapp.core.ui.ReviewListItem
+import com.fauzimaulana.fauzimovieapp.core.ui.listitem.ReviewListItem
 import com.fauzimaulana.fauzimovieapp.core.ui.components.DefaultImageLoader
 import com.fauzimaulana.fauzimovieapp.core.ui.components.SectionTitle
 import com.fauzimaulana.fauzimovieapp.core.ui.theme.FauziMovieAppTheme

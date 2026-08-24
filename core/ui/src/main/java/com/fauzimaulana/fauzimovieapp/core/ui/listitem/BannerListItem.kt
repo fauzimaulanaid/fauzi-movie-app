@@ -1,4 +1,4 @@
-package com.fauzimaulana.fauzimovieapp.core.ui
+package com.fauzimaulana.fauzimovieapp.core.ui.listitem
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.height
