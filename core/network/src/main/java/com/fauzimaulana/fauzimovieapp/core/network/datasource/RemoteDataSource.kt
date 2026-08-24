@@ -1,4 +1,4 @@
-package com.fauzimaulana.fauzimovieapp.core.network
+package com.fauzimaulana.fauzimovieapp.core.network.datasource
 
 import androidx.paging.PagingData
 import com.fauzimaulana.fauzimovieapp.core.network.paging.createPager

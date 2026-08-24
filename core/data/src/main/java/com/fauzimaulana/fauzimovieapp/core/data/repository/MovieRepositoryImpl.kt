@@ -8,7 +8,7 @@ import com.fauzimaulana.fauzimovieapp.core.database.datasource.LocalDataSource
 import com.fauzimaulana.fauzimovieapp.core.domain.repository.MovieRepository
 import com.fauzimaulana.fauzimovieapp.core.model.data.MovieModel
 import com.fauzimaulana.fauzimovieapp.core.model.data.ReviewModel
-import com.fauzimaulana.fauzimovieapp.core.network.RemoteDataSource
+import com.fauzimaulana.fauzimovieapp.core.network.datasource.RemoteDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
