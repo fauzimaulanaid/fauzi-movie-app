@@ -1,10 +1,12 @@
 package com.fauzimaulana.fauzimovieapp.feature.movie.detail.content
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
@@ -15,17 +17,25 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.paging.PagingData
+import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.fauzimaulana.fauzimovieapp.core.model.data.MovieModel
+import com.fauzimaulana.fauzimovieapp.core.model.data.ReviewModel
+import com.fauzimaulana.fauzimovieapp.core.ui.ReviewListItem
 import com.fauzimaulana.fauzimovieapp.core.ui.components.DefaultImageLoader
 import com.fauzimaulana.fauzimovieapp.core.ui.components.SectionTitle
 import com.fauzimaulana.fauzimovieapp.core.ui.theme.FauziMovieAppTheme
 import com.fauzimaulana.fauzimovieapp.core.ui.utils.formatDate
 import com.fauzimaulana.fauzimovieapp.feature.movie.R
+import com.fauzimaulana.fauzimovieapp.feature.movie.preview.previewReviewList
+import kotlinx.coroutines.flow.flowOf
 
 @Composable
 fun DetailScreenContent(
     modifier: Modifier = Modifier,
-    movie: MovieModel
+    movie: MovieModel,
+    movieReviews: LazyPagingItems<ReviewModel>
 ) {
     Column(
         modifier = modifier
@@ -66,12 +76,28 @@ fun DetailScreenContent(
         SectionTitle(
             title = stringResource(R.string.review)
         )
+        Spacer(modifier = Modifier.height(8.dp))
+        LazyColumn(
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+            modifier = Modifier
+                .height(400.dp)
+                .padding(horizontal = 16.dp)
+        ) {
+            items(movieReviews.itemCount) { index ->
+                val movieReview = movieReviews[index] ?: ReviewModel()
+                ReviewListItem(
+                    review = movieReview
+                )
+            }
+        }
     }
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 private fun DetailScreenContentPreview() {
+    val fakePagingData = PagingData.from(previewReviewList)
+    val fakeFlow = flowOf(fakePagingData)
     FauziMovieAppTheme {
         DetailScreenContent(
             movie = MovieModel(
@@ -81,7 +107,8 @@ private fun DetailScreenContentPreview() {
                 overview = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 posterPath = "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
                 backdropPath = "https://image.tmdb.org/t/p/w500/7iwUUcKURMT7aKfCwMy6YnGtchD.jpg"
-            )
+            ),
+            movieReviews = fakeFlow.collectAsLazyPagingItems()
         )
     }
 }

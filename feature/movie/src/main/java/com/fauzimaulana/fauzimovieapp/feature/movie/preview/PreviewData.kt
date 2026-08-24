@@ -1,6 +1,8 @@
 package com.fauzimaulana.fauzimovieapp.feature.movie.preview
 
+import com.fauzimaulana.fauzimovieapp.core.model.data.AuthorDetailsModel
 import com.fauzimaulana.fauzimovieapp.core.model.data.MovieModel
+import com.fauzimaulana.fauzimovieapp.core.model.data.ReviewModel
 
 internal val previewMovieList = listOf(
     MovieModel(
@@ -122,5 +124,30 @@ internal val previewMovieList = listOf(
         title = "Spirited Away",
         releaseDate = "2001-07-20",
         overview = "During her family's move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches, and spirits, and where humans are changed into beasts."
+    )
+)
+
+internal val previewReviewList = listOf(
+    ReviewModel(
+        id = "1",
+        author = "Muhammad Fauzi Maulana",
+        content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        createdAt = "2025-12-15",
+        authorDetails = AuthorDetailsModel(
+            name = "Fauzi Maulana",
+            username = "fauzimaulana",
+            rating = 5.0
+        )
+    ),
+    ReviewModel(
+        id = "2",
+        author = "Jaya Abadi",
+        content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        createdAt = "2026-01-15",
+        authorDetails = AuthorDetailsModel(
+            name = "Jaya Abadi",
+            username = "jayaabadi",
+            rating = 4.0
+        )
     )
 )

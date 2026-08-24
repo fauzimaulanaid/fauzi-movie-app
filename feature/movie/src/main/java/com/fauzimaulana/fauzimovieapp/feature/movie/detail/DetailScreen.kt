@@ -14,6 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.fauzimaulana.fauzimovieapp.core.model.data.MovieModel
 import com.fauzimaulana.fauzimovieapp.core.ui.components.DefaultIconButton
 import com.fauzimaulana.fauzimovieapp.core.ui.components.DefaultToolbar
@@ -24,9 +26,13 @@ import com.fauzimaulana.fauzimovieapp.feature.movie.detail.content.DetailScreenC
 @Composable
 fun DetailScreen(
     modifier: Modifier = Modifier,
+    detailViewModel: DetailViewModel = hiltViewModel(),
     movie: MovieModel,
     onBackPressed: () -> Unit
 ) {
+
+    val movieReviews = detailViewModel.movieReviews.collectAsLazyPagingItems()
+
     Scaffold(
         modifier = modifier,
         topBar = {
@@ -39,7 +45,8 @@ fun DetailScreen(
         content = { paddingValues ->
             DetailScreenContent(
                 modifier = Modifier.padding(bottom = paddingValues.calculateBottomPadding()),
-                movie = movie
+                movie = movie,
+                movieReviews = movieReviews
             )
         },
         bottomBar = {
