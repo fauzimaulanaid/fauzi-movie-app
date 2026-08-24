@@ -1,5 +1,6 @@
 package com.fauzimaulana.fauzimovieapp.core.ui
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -15,7 +16,8 @@ import com.fauzimaulana.fauzimovieapp.core.ui.theme.FauziMovieAppTheme
 @Composable
 fun BannerListItem(
     modifier: Modifier = Modifier,
-    movie: MovieModel
+    movie: MovieModel,
+    onClick: () -> Unit
 ) {
     DefaultImageLoader(
         image = movie.backdropPath,
@@ -24,6 +26,7 @@ fun BannerListItem(
             .width(320.dp)
             .height(200.dp)
             .clip(RoundedCornerShape(8.dp))
+            .clickable { onClick() }
     )
 }
 
@@ -39,7 +42,8 @@ private fun BannerListItemPreview() {
                 overview = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 posterPath = "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
                 backdropPath = "https://image.tmdb.org/t/p/w500/7iwUUcKURMT7aKfCwMy6YnGtchD.jpg"
-            )
+            ),
+            onClick = {}
         )
     }
 }

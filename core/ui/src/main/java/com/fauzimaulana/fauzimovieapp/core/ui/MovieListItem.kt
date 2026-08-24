@@ -1,5 +1,6 @@
 package com.fauzimaulana.fauzimovieapp.core.ui
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -22,11 +23,13 @@ import com.fauzimaulana.fauzimovieapp.core.ui.utils.formatDate
 @Composable
 fun MovieListItem(
     movie: MovieModel,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
 ) {
     Column(
         modifier = modifier
             .width(150.dp)
+            .clickable { onClick() }
     ) {
         DefaultImageLoader(
             image = movie.posterPath,
@@ -67,7 +70,8 @@ private fun MovieListItemPreview() {
                 overview = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 posterPath = "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
                 backdropPath = "https://image.tmdb.org/t/p/original/7iwUUcKURMT7aKfCwMy6YnGtchD.jpg"
-            )
+            ),
+            onClick = {}
         )
     }
 }

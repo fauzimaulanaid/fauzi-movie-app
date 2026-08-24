@@ -34,7 +34,8 @@ fun HomeScreenContent(
     modifier: Modifier = Modifier,
     popularMovies: LazyPagingItems<MovieModel>,
     topRatedMovies: LazyPagingItems<MovieModel>,
-    nowPlayingMovies: LazyPagingItems<MovieModel>
+    nowPlayingMovies: LazyPagingItems<MovieModel>,
+    onMovieClicked: (MovieModel) -> Unit
 ) {
     val popularMoviesState = rememberLazyListState()
 
@@ -60,7 +61,10 @@ fun HomeScreenContent(
         ) {
             items(count = popularMovies.itemCount) { index ->
                 val popularMovie = popularMovies[index] ?: MovieModel()
-                BannerListItem(movie = popularMovie)
+                BannerListItem(
+                    movie = popularMovie,
+                    onClick = { onMovieClicked(popularMovie) }
+                )
             }
         }
         Spacer(modifier = Modifier.height(16.dp))
@@ -74,7 +78,10 @@ fun HomeScreenContent(
         ) {
             items(count = topRatedMovies.itemCount) { index ->
                 val topRatedMovie = topRatedMovies[index] ?: MovieModel()
-                MovieListItem(movie = topRatedMovie)
+                MovieListItem(
+                    movie = topRatedMovie,
+                    onClick = { onMovieClicked(topRatedMovie) }
+                )
             }
         }
         Spacer(modifier = Modifier.height(16.dp))
@@ -88,7 +95,10 @@ fun HomeScreenContent(
         ) {
             items(count = nowPlayingMovies.itemCount) { index ->
                 val nowPlayingMovie = nowPlayingMovies[index] ?: MovieModel()
-                MovieListItem(movie = nowPlayingMovie)
+                MovieListItem(
+                    movie = nowPlayingMovie,
+                    onClick = { onMovieClicked(nowPlayingMovie) }
+                )
             }
         }
     }
@@ -103,7 +113,8 @@ private fun HomeScreenContentPreview() {
         HomeScreenContent(
             popularMovies = fakeFlow.collectAsLazyPagingItems(),
             topRatedMovies = fakeFlow.collectAsLazyPagingItems(),
-            nowPlayingMovies = fakeFlow.collectAsLazyPagingItems()
+            nowPlayingMovies = fakeFlow.collectAsLazyPagingItems(),
+            onMovieClicked = {}
         )
     }
 }
