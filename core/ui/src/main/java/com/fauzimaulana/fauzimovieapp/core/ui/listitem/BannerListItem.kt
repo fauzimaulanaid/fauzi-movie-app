@@ -1,0 +1,49 @@
+package com.fauzimaulana.fauzimovieapp.core.ui.listitem
+
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.fauzimaulana.fauzimovieapp.core.model.data.MovieModel
+import com.fauzimaulana.fauzimovieapp.core.ui.components.DefaultImageLoader
+import com.fauzimaulana.fauzimovieapp.core.ui.theme.FauziMovieAppTheme
+
+@Composable
+fun BannerListItem(
+    modifier: Modifier = Modifier,
+    movie: MovieModel,
+    onClick: () -> Unit
+) {
+    DefaultImageLoader(
+        image = movie.backdropPath,
+        contentDescription = movie.title,
+        modifier = modifier
+            .width(320.dp)
+            .height(200.dp)
+            .clip(RoundedCornerShape(8.dp))
+            .clickable { onClick() }
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun BannerListItemPreview() {
+    FauziMovieAppTheme {
+        BannerListItem(
+            movie = MovieModel(
+                id = 1,
+                title = "Spider-Man: No Way Home",
+                releaseDate = "2025-12-15",
+                overview = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                posterPath = "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
+                backdropPath = "https://image.tmdb.org/t/p/w500/7iwUUcKURMT7aKfCwMy6YnGtchD.jpg"
+            ),
+            onClick = {}
+        )
+    }
+}
