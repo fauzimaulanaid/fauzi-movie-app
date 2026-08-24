@@ -11,6 +11,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.fauzimaulana.fauzimovieapp.core.model.data.MovieModel
 import com.fauzimaulana.fauzimovieapp.core.ui.components.DefaultIconButton
 import com.fauzimaulana.fauzimovieapp.core.ui.components.DefaultToolbar
 import com.fauzimaulana.fauzimovieapp.core.ui.theme.FauziMovieAppTheme
@@ -21,7 +22,8 @@ import com.fauzimaulana.fauzimovieapp.feature.movie.home.content.HomeScreenConte
 fun HomeScreen(
     modifier: Modifier = Modifier,
     homeViewModel: HomeViewModel = hiltViewModel(),
-    onFavoriteClicked: () -> Unit
+    onFavoriteClicked: () -> Unit,
+    onMovieClicked: (MovieModel) -> Unit
 ) {
 
     val popularMovies = homeViewModel.popularMovie.collectAsLazyPagingItems()
@@ -48,7 +50,8 @@ fun HomeScreen(
                 modifier = Modifier.padding(paddingValues),
                 popularMovies = popularMovies,
                 topRatedMovies = topRatedMovies,
-                nowPlayingMovies = nowPlayingMovies
+                nowPlayingMovies = nowPlayingMovies,
+                onMovieClicked = onMovieClicked
             )
         }
     )
@@ -58,6 +61,9 @@ fun HomeScreen(
 @Composable
 private fun HomeScreenPreview() {
     FauziMovieAppTheme {
-        HomeScreen{}
+        HomeScreen(
+            onFavoriteClicked = {},
+            onMovieClicked = {}
+        )
     }
 }
