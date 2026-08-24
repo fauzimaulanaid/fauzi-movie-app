@@ -1,4 +1,4 @@
-package com.fauzimaulana.fauzimovieapp.ui.theme
+package com.fauzimaulana.fauzimovieapp.core.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
