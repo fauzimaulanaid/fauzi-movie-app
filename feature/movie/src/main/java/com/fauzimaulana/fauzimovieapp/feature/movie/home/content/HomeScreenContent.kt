@@ -1,5 +1,7 @@
 package com.fauzimaulana.fauzimovieapp.feature.movie.home.content
 
+import androidx.compose.foundation.gestures.snapping.SnapPosition
+import androidx.compose.foundation.gestures.snapping.rememberSnapFlingBehavior
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -7,6 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
@@ -33,6 +36,13 @@ fun HomeScreenContent(
     topRatedMovies: LazyPagingItems<MovieModel>,
     nowPlayingMovies: LazyPagingItems<MovieModel>
 ) {
+    val popularMoviesState = rememberLazyListState()
+
+    val popularMoviesFlingBehaviour = rememberSnapFlingBehavior(
+        lazyListState = popularMoviesState,
+        snapPosition = SnapPosition.Start
+    )
+
     Column(
         modifier = modifier
             .padding(top = 16.dp)
@@ -43,7 +53,9 @@ fun HomeScreenContent(
         )
         Spacer(modifier = Modifier.height(8.dp))
         LazyRow(
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            state = popularMoviesState,
+            flingBehavior = popularMoviesFlingBehaviour,
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
             contentPadding = PaddingValues(horizontal = 16.dp)
         ) {
             items(count = popularMovies.itemCount) { index ->
