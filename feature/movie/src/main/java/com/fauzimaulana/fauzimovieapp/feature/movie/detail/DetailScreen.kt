@@ -1,5 +1,6 @@
 package com.fauzimaulana.fauzimovieapp.feature.movie.detail
 
+import android.content.Intent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -7,11 +8,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Share
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -20,6 +23,7 @@ import com.fauzimaulana.fauzimovieapp.core.model.data.MovieModel
 import com.fauzimaulana.fauzimovieapp.core.ui.components.DefaultIconButton
 import com.fauzimaulana.fauzimovieapp.core.ui.components.DefaultToolbar
 import com.fauzimaulana.fauzimovieapp.core.ui.theme.FauziMovieAppTheme
+import com.fauzimaulana.fauzimovieapp.core.ui.utils.formatDate
 import com.fauzimaulana.fauzimovieapp.feature.movie.R
 import com.fauzimaulana.fauzimovieapp.feature.movie.detail.content.DetailScreenContent
 
@@ -30,8 +34,14 @@ fun DetailScreen(
     movie: MovieModel,
     onBackPressed: () -> Unit
 ) {
-
     val movieReviews = detailViewModel.movieReviews.collectAsLazyPagingItems()
+    val context = LocalContext.current
+    val shareText = stringResource(
+        R.string.share_text,
+        movie.title,
+        movie.releaseDate.formatDate(),
+        movie.overview
+    )
 
     Scaffold(
         modifier = modifier,
@@ -60,14 +70,20 @@ fun DetailScreen(
                     DefaultIconButton(
                         icon = Icons.Filled.Favorite,
                         contentDescription = stringResource(R.string.favorite),
-                        contentColor = Color.Black,
+                        contentColor = MaterialTheme.colorScheme.primary,
                         onClick = {}
                     )
                     DefaultIconButton(
                         icon = Icons.Filled.Share,
                         contentDescription = stringResource(R.string.share),
-                        contentColor = Color.Black,
-                        onClick = {}
+                        contentColor = MaterialTheme.colorScheme.primary,
+                        onClick = {
+                            val intent = Intent(Intent.ACTION_SEND).apply {
+                                type = "text/plain"
+                                putExtra(Intent.EXTRA_TEXT, shareText)
+                            }
+                            context.startActivity(Intent.createChooser(intent, null))
+                        }
                     )
                 }
             }
