@@ -2,7 +2,7 @@
 
 [![Android](https://img.shields.io/badge/Platform-Android-3DDC84?style=flat&logo=android&logoColor=white)](https://www.android.com)
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.4.10-7F52FF?style=flat&logo=kotlin&logoColor=white)](https://kotlinlang.org)
-[![Jetpack Compose](https://img.shields.io/badge/UI-Jetpack%25 Compose-4285F4?style=flat&logo=jetpackcompose&logoColor=white)](https://developer.android.com/jetpack/compose)
+[![Jetpack Compose](https://img.shields.io/badge/UI-Jetpack%20Compose-4285F4?style=flat)](https://developer.android.com/jetpack/compose)
 [![Hilt](https://img.shields.io/badge/DI-Hilt-2875C7?style=flat&logo=dagger&logoColor=white)](https://dagger.dev/hilt/)
 
 A production-grade, modern Android application showcasing **Modern Android Development (MAD)** standards, **Multi-Module Clean Architecture**, and robust offline-first patterns. This project integrates with The Movie Database (TMDB) API to deliver a seamless browsing, reviewing, and favoriting experience.
